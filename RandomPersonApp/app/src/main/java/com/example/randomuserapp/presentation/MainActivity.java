@@ -52,3 +52,4 @@ public class MainActivity extends AppCompatActivity
         this.personAdapter.notifyDataSetChanged();
     }
 }
+//TODO: Activity_Main.xml moet text overlay hebben op afbeeldingen.
