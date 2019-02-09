@@ -82,15 +82,21 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
         try {
             JSONArray results = new JSONArray(response);
 
-            for(int i = 0; i<results.length();i++){
-
+            for(int i = 0; i < results.length();i++){
                 JSONObject user = results.getJSONObject(i);
-
                 //Get name
                 String title = user.getString("author");
 
                 //Get image
-                String img = user.getJSONArray("images").getJSONObject(3).getString("url");
+                JSONArray imgResult = user.getJSONArray("images");
+
+                String img = null;
+
+                for(int j = 0; j < imgResult.length();j++){
+                    if (imgResult.getJSONObject(j).getString("type").equals("frontpage")){
+                        img = user.getJSONArray("images").getJSONObject(j).getString("url");
+                    }
+                }
 
                 Person person = new Person(title).setImgUrl("https://api.blindwalls.gallery/" + img);
                 personArrayList.add(person);
