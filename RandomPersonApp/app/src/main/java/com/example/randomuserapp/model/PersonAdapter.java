@@ -40,7 +40,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
 
         Person person = personList.get(position);
 
-        //personViewHolder.tvPersonName.setText(person.getFullName());
+        personViewHolder.tvPersonName.setText(person.getFullName());
         Picasso.get().load(person.getImgUrl()).into(personViewHolder.imgPersonPictures);
 
     }
@@ -66,8 +66,8 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             super(itemView);
 
             imgPersonPictures = itemView.findViewById(R.id.img_person_pictures);
-            //tvPersonName = itemView.findViewById(R.id.tv_person_name);
-            //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
+            tvPersonName = itemView.findViewById(R.id.tv_person_name);
+            tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
             itemView.setOnClickListener(this);
         }
 

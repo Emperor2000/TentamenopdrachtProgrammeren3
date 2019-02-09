@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class RandomUserTask extends AsyncTask<Void, Void, String> {
 
     private final String TAG = RandomUserTask.class.getSimpleName();
-    private String mRandomUserApi = "https://randomuser.me/api?results=25";
+    private String mRandomUserApi = "https://api.blindwalls.gallery/apiv2/murals";
     private RandomUserListerner listener;
 
     public RandomUserTask(RandomUserListerner listener){
@@ -80,25 +80,19 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
         ArrayList<Person> personArrayList = new ArrayList<>();
 
         try {
-            JSONObject jsonObject = new JSONObject(response);
-            JSONArray results = jsonObject.getJSONArray("results");
+            JSONArray results = new JSONArray(response);
 
             for(int i = 0; i<results.length();i++){
 
                 JSONObject user = results.getJSONObject(i);
 
                 //Get name
-                String title = user.getJSONObject("name").getString("title");
-                String firstName = user.getJSONObject("name").getString("first");
-                String lastName = user.getJSONObject("name").getString("last");
-
-                //Get full name
-                String name = title + " " + firstName + " " + lastName;
+                String title = user.getString("author");
 
                 //Get image
-                String img = user.getJSONObject("picture").getString("large");
+                String img = user.getJSONArray("images").getJSONObject(3).getString("url");
 
-                Person person = new Person(title, firstName, lastName).setImgUrl(img);
+                Person person = new Person(title).setImgUrl("https://api.blindwalls.gallery/" + img);
                 personArrayList.add(person);
             }
         } catch (JSONException e) {

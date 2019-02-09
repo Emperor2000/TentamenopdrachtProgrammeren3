@@ -4,13 +4,12 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:padding="5dp"
-        android:id="@+id/img_person_pictures"
-        android:scaleType="fitXY"/>
-    
-    <!--<LinearLayout
+        android:id="@+id/img_person_pictures"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -26,5 +25,5 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:id="@+id/tv_person_email"/>
-    </LinearLayout>-->
+    </LinearLayout>
 </LinearLayout>
