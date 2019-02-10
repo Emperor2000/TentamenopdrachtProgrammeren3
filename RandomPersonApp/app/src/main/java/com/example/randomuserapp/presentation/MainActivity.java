@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onUserNameAvailable(ArrayList<Profile> profiles){
-        Log.d(TAG, "We have " + profileList.size() + " people");
-
         this.profileList.clear();
         this.profileList.addAll(profiles);
         this.personAdapter.notifyDataSetChanged();
+
+        Log.d(TAG, "We have " + profileList.size() + " people");
     }
 }
 //TODO: Activity_Main.xml moet text overlay hebben op afbeeldingen.
