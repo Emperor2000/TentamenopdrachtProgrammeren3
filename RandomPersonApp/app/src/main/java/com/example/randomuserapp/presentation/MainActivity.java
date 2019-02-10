@@ -5,16 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.randomuserapp.R;
-import com.example.randomuserapp.model.Person;
+import com.example.randomuserapp.model.Profile;
 import com.example.randomuserapp.model.PersonAdapter;
 import com.example.randomuserapp.services.RandomUserTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -23,8 +18,8 @@ public class MainActivity extends AppCompatActivity
 
     private final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
-    private ArrayList<Person> personList = new ArrayList<>();
-    private PersonAdapter personAdapter = new PersonAdapter(personList);
+    private ArrayList<Profile> profileList = new ArrayList<>();
+    private PersonAdapter personAdapter = new PersonAdapter(profileList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +29,9 @@ public class MainActivity extends AppCompatActivity
         recyclerView = (RecyclerView) findViewById(R.id.rv_person_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //personList.add(new Person("mr", "Bob", "faggot"));
+        //profileList.add(new Profile("mr", "Bob", "faggot"));
 
-        personAdapter = new PersonAdapter(personList);
+        personAdapter = new PersonAdapter(profileList);
         recyclerView.setAdapter(personAdapter);
 
         RandomUserTask randomUserTask = new RandomUserTask(this);
@@ -44,11 +39,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onUserNameAvailable(ArrayList<Person> persons){
-        Log.d(TAG, "We have " + personList.size() + " people");
+    public void onUserNameAvailable(ArrayList<Profile> profiles){
+        Log.d(TAG, "We have " + profileList.size() + " people");
 
-        this.personList.clear();
-        this.personList.addAll(persons);
+        this.profileList.clear();
+        this.profileList.addAll(profiles);
         this.personAdapter.notifyDataSetChanged();
     }
 }

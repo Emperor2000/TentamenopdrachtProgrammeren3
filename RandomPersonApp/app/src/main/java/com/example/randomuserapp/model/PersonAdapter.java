@@ -10,16 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.randomuserapp.R;
-import com.example.randomuserapp.presentation.MainActivity;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder>{
     private final String TAG = PersonAdapter.class.getSimpleName();
-    private ArrayList<Person> personList;
+    private ArrayList<Profile> profileList;
 
-    public PersonAdapter(ArrayList<Person> personList) {
-        this.personList = personList;
+    public PersonAdapter(ArrayList<Profile> profileList) {
+        this.profileList = profileList;
     }
 
     @NonNull
@@ -38,16 +37,16 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
     @Override
     public void onBindViewHolder(@NonNull PersonViewHolder personViewHolder, int position) {
 
-        Person person = personList.get(position);
+        Profile profile = profileList.get(position);
 
-        //personViewHolder.tvPersonName.setText(person.getFullName());
-        Picasso.get().load(person.getImgUrl()).into(personViewHolder.imgPersonPictures);
+        //personViewHolder.tvPersonName.setText(profile.getFullName());
+        Picasso.get().load(profile.getImgUrl()).into(personViewHolder.imgPersonPictures);
 
     }
 
     @Override
     public int getItemCount() {
-        return this.personList.size();
+        return this.profileList.size();
     }
 
     public class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -3,7 +3,7 @@ package com.example.randomuserapp.services;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.randomuserapp.model.Person;
+import com.example.randomuserapp.model.Profile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,7 +77,7 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "onPostExecute was called");
         Log.d(TAG, "Response = " + response);
 
-        ArrayList<Person> personArrayList = new ArrayList<>();
+        ArrayList<Profile> profileArrayList = new ArrayList<>();
 
         try {
             JSONArray results = new JSONArray(response);
@@ -98,17 +98,17 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
                     }
                 }
 
-                Person person = new Person(title).setImgUrl("https://api.blindwalls.gallery/" + img);
-                personArrayList.add(person);
+                Profile profile = new Profile(title).setImgUrl("https://api.blindwalls.gallery/" + img);
+                profileArrayList.add(profile);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        listener.onUserNameAvailable(personArrayList);
+        listener.onUserNameAvailable(profileArrayList);
     }
 
     public interface RandomUserListerner{
-        public void onUserNameAvailable(ArrayList<Person> persons);
+        public void onUserNameAvailable(ArrayList<Profile> profiles);
     }
 
 }
