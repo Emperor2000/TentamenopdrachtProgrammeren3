@@ -86,20 +86,36 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
                 JSONObject user = results.getJSONObject(i);
                 //Get name
                 String title = user.getString("author");
+                //CHANGE GETSTRING 'EN' TO VARIABLE
+                String lang = "nl";
+                String desc = user.getJSONObject("description").getString(lang);
+                String mate = user.getJSONObject("material").getString(lang);
+                String photographer = user.getString("photographer");
+                String address = user.getString("address");
+
 
                 //Get image
                 JSONArray imgResult = user.getJSONArray("images");
 
                 String img = null;
+                ArrayList<String> imgWall = new ArrayList<>();
 
                 for(int j = 0; j < imgResult.length();j++){
                     if (imgResult.getJSONObject(j).getString("type").equals("frontpage")){
                         img = user.getJSONArray("images").getJSONObject(j).getString("url");
                     }
+                    else if(imgResult.getJSONObject(j).getString("type").equals("wall")){
+                        imgWall.add(user.getJSONArray("images").getJSONObject(j).getString("url"));
+                    }
                 }
 
-                Profile profile = new Profile(title).setImgUrl("https://api.blindwalls.gallery/" + img);
+                Profile profile = new Profile(title, mate, address, photographer, desc).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
                 profileArrayList.add(profile);
+
+                //Check if wall images are added correctly
+                /*for (String check : imgWall){
+                    Log.d(TAG, check);
+                }*/
             }
         } catch (JSONException e) {
             e.printStackTrace();

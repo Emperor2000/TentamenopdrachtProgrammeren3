@@ -1,9 +1,12 @@
 package com.example.randomuserapp.model;
 
+import java.util.ArrayList;
+
 public class Profile {
 
     private String author;      //Profiel/persoon
     private String imgUrl;      //url to image
+    private ArrayList<String> imgWallUrl;
     private String description;
     private String fotograaf;
     private String adres;
@@ -18,6 +21,11 @@ public class Profile {
 
     public Profile setImgUrl(String imgUrl){
         this.imgUrl = imgUrl;
+        return this;
+    }
+
+    public Profile setWallImgUrl(ArrayList<String> imgWallUrl){
+        this.imgWallUrl = imgWallUrl;
         return this;
     }
 
