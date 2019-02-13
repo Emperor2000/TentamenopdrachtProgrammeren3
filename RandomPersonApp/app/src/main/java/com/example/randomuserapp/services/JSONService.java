@@ -18,13 +18,13 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RandomUserTask extends AsyncTask<Void, Void, String> {
+public class JSONService extends AsyncTask<Void, Void, String> {
 
-    private final String TAG = RandomUserTask.class.getSimpleName();
+    private final String TAG = JSONService.class.getSimpleName();
     private String mRandomUserApi = "https://api.blindwalls.gallery/apiv2/murals";
     private RandomUserListerner listener;
 
-    public RandomUserTask(RandomUserListerner listener){
+    public JSONService(RandomUserListerner listener){
         this.listener = listener;
     }
 
@@ -34,7 +34,6 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
 
         String response = null;
 
-        //ToDo: Make url
         try {
             URL mUrl = new URL(mRandomUserApi);
             URLConnection urlConnection = mUrl.openConnection();
@@ -63,10 +62,6 @@ public class RandomUserTask extends AsyncTask<Void, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //ToDo: Send request to server
-        //ToDo: Compile response
-        //ToDo: Return name of user
-
         return response;
     }
 

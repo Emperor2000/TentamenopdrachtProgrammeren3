@@ -8,43 +8,40 @@ import android.util.Log;
 
 import com.example.randomuserapp.R;
 import com.example.randomuserapp.model.Profile;
-import com.example.randomuserapp.model.PersonAdapter;
-import com.example.randomuserapp.services.RandomUserTask;
+import com.example.randomuserapp.model.WallProfileAdapter;
+import com.example.randomuserapp.services.JSONService;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-        implements RandomUserTask.RandomUserListerner {
+        implements JSONService.RandomUserListerner {
 
     private final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
     private ArrayList<Profile> profileList = new ArrayList<>();
-    private PersonAdapter personAdapter = new PersonAdapter(profileList);
+    private WallProfileAdapter wallProfileAdapter = new WallProfileAdapter(profileList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_recyclerview);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rv_person_list);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_profile_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //profileList.add(new Profile("mr", "Bob", "faggot"));
+        wallProfileAdapter = new WallProfileAdapter(profileList);
+        recyclerView.setAdapter(wallProfileAdapter);
 
-        personAdapter = new PersonAdapter(profileList);
-        recyclerView.setAdapter(personAdapter);
-
-        RandomUserTask randomUserTask = new RandomUserTask(this);
-        randomUserTask.execute();
+        JSONService JSONService = new JSONService(this);
+        JSONService.execute();
     }
 
     @Override
     public void onUserNameAvailable(ArrayList<Profile> profiles){
         this.profileList.clear();
         this.profileList.addAll(profiles);
-        this.personAdapter.notifyDataSetChanged();
+        this.wallProfileAdapter.notifyDataSetChanged();
 
         Log.d(TAG, "We have " + profileList.size() + " people");
     }
 }
-//TODO: Activity_Main.xml moet text overlay hebben op afbeeldingen.

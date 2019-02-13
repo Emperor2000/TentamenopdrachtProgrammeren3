@@ -13,11 +13,11 @@ import com.example.randomuserapp.R;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder>{
-    private final String TAG = PersonAdapter.class.getSimpleName();
+public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.PersonViewHolder>{
+    private final String TAG = WallProfileAdapter.class.getSimpleName();
     private ArrayList<Profile> profileList;
 
-    public PersonAdapter(ArrayList<Profile> profileList) {
+    public WallProfileAdapter(ArrayList<Profile> profileList) {
         this.profileList = profileList;
     }
 
@@ -27,7 +27,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
 
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View listRow = inflater.inflate(R.layout.person_list_row, viewGroup, false);
+        View listRow = inflater.inflate(R.layout.wall_list_row, viewGroup, false);
 
         PersonViewHolder personViewHolder = new PersonViewHolder(listRow);
 
@@ -64,7 +64,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
         public PersonViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgPersonPictures = itemView.findViewById(R.id.img_person_pictures);
+            imgPersonPictures = itemView.findViewById(R.id.img_wall_picture);
             //tvPersonName = itemView.findViewById(R.id.tv_person_name);
             //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
             itemView.setOnClickListener(this);
