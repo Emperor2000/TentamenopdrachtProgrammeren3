@@ -1,6 +1,7 @@
 package com.example.randomuserapp.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.randomuserapp.R;
+import com.example.randomuserapp.presentation.InfoActivity;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
-public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.PersonViewHolder>{
+public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.BlindWallViewHolder>{
     private final String TAG = WallProfileAdapter.class.getSimpleName();
     private ArrayList<Profile> profileList;
 
@@ -21,27 +24,40 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         this.profileList = profileList;
     }
 
+
     @NonNull
     @Override
-    public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public BlindWallViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View listRow = inflater.inflate(R.layout.wall_list_row, viewGroup, false);
 
-        PersonViewHolder personViewHolder = new PersonViewHolder(listRow);
+        BlindWallViewHolder blindWallViewHolder = new BlindWallViewHolder(listRow);
 
-        return personViewHolder;
+        return blindWallViewHolder;
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PersonViewHolder personViewHolder, int position) {
+    public void onBindViewHolder(@NonNull BlindWallViewHolder blindWallProfileViewHolder, int position) {
 
         Profile profile = profileList.get(position);
 
         //personViewHolder.tvPersonName.setText(profile.getFullName());
-        Picasso.get().load(profile.getImgUrl()).into(personViewHolder.imgPersonPictures);
-
+        Picasso.get().load(profile.getImgUrl()).into(blindWallProfileViewHolder.imgProfilePictures);
+    blindWallProfileViewHolder.imgProfilePictures.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          //  int i = getAdapterPosition();
+      //      Log.d(TAG, "ID = " + i);
+            //Intent intent = new Intent(WallProfileAdapter.this, InfoActivity.class);
+            Context context = v.getContext();
+            Intent intent = new Intent(context, InfoActivity.class);
+      //      intent.putExtra("id", i);
+            context.startActivity(intent);
+        }
+    });
     }
 
     @Override
@@ -49,22 +65,30 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         return this.profileList.size();
     }
 
-    public class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class BlindWallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private View itemView;
 
         @Override
         public void onClick(View v) {
             int i = getAdapterPosition();
             Log.d(TAG, "ID = " + i);
+            //Intent intent = new Intent(WallProfileAdapter.this, InfoActivity.class);
+            Context context = v.getContext(); //this.itemView.getContext();
+            Intent intent = new Intent(context, InfoActivity.class);
+            intent.putExtra("id", i);
+            context.startActivity(intent);
         }
 
-        public ImageView imgPersonPictures;
+        public ImageView imgProfilePictures;
         public TextView tvPersonName;
         public TextView tvPersonEmail;
 
-        public PersonViewHolder(@NonNull View itemView) {
+        public BlindWallViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.itemView = itemView;
 
-            imgPersonPictures = itemView.findViewById(R.id.img_wall_picture);
+            imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
             //tvPersonName = itemView.findViewById(R.id.tv_person_name);
             //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
             itemView.setOnClickListener(this);

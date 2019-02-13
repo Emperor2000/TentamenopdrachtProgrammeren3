@@ -21,10 +21,10 @@ import java.util.Scanner;
 public class JSONService extends AsyncTask<Void, Void, String> {
 
     private final String TAG = JSONService.class.getSimpleName();
-    private String mRandomUserApi = "https://api.blindwalls.gallery/apiv2/murals";
-    private RandomUserListerner listener;
+    private String mBlindWallAPI = "https://api.blindwalls.gallery/apiv2/murals";
+    private JSONServiceListener listener;
 
-    public JSONService(RandomUserListerner listener){
+    public JSONService(JSONServiceListener listener){
         this.listener = listener;
     }
 
@@ -35,7 +35,7 @@ public class JSONService extends AsyncTask<Void, Void, String> {
         String response = null;
 
         try {
-            URL mUrl = new URL(mRandomUserApi);
+            URL mUrl = new URL(mBlindWallAPI);
             URLConnection urlConnection = mUrl.openConnection();
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlConnection;
             httpURLConnection.setRequestMethod("GET");
@@ -118,7 +118,7 @@ public class JSONService extends AsyncTask<Void, Void, String> {
         listener.onUserNameAvailable(profileArrayList);
     }
 
-    public interface RandomUserListerner{
+    public interface JSONServiceListener {
         public void onUserNameAvailable(ArrayList<Profile> profiles);
     }
 

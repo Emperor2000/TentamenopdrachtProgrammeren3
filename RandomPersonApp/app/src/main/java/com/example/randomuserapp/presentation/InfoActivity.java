@@ -13,13 +13,15 @@ public class InfoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private int profileID;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rv_profile_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView = (RecyclerView) findViewById(R.id.rv_profile_list);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //profileList.add(new Profile("mr", "Bob", "faggot"));
 
