@@ -1,4 +1,4 @@
-package com.example.randomuserapp.model;
+package com.example.blindwallapp.model;
 
 import java.util.ArrayList;
 

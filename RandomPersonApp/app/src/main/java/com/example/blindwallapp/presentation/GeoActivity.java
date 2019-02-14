@@ -1,11 +1,11 @@
-package com.example.randomuserapp.presentation;
+package com.example.blindwallapp.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-import com.example.randomuserapp.R;
+import com.example.blindwallapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

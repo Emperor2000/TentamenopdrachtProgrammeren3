@@ -1,8 +1,8 @@
-package com.example.randomuserapp.services;
+package com.example.blindwallapp.services;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import com.example.randomuserapp.model.Profile;
+import com.example.blindwallapp.model.Profile;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

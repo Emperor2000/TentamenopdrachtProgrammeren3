@@ -1,4 +1,4 @@
-package com.example.randomuserapp.model;
+package com.example.blindwallapp.model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.randomuserapp.R;
-import com.example.randomuserapp.presentation.InfoActivity;
+import com.example.blindwallapp.R;
+import com.example.blindwallapp.presentation.InfoActivity;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 

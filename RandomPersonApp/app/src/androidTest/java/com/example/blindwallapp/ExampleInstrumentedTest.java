@@ -1,4 +1,4 @@
-package com.example.randomuserapp;
+package com.example.blindwallapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

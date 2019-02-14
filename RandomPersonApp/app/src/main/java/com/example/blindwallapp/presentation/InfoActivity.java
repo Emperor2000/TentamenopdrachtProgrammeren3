@@ -1,4 +1,4 @@
-package com.example.randomuserapp.presentation;
+package com.example.blindwallapp.presentation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.randomuserapp.R;
+import com.example.blindwallapp.R;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class InfoActivity extends AppCompatActivity {
     private String mDescription;
     private String mPhotographer;
     private String mAddress;
-    private String materiaal;
+    private String mMaterial;
     private double mLatitude;
     private double mLongitude;
     @Override
@@ -38,14 +38,14 @@ public class InfoActivity extends AppCompatActivity {
 
         //Unpack variables
         Intent unpack = getIntent();                                                                //Set unpack region
-        mAuthor = unpack.getStringExtra("mAuthor");                                             //Unpack mAuthor
-        mImgWallUrl = unpack.getStringArrayListExtra("mImgWallUrl");                            //Unpack image arrayList
-        mDescription = unpack.getStringExtra("mDescription");                                   //Unpack mDescription
-        mPhotographer = unpack.getStringExtra("mPhotographer");                                 //Unpack mPhotographer
-        mAddress = unpack.getStringExtra("mAddress");                                           //Unpack mAddress
-        materiaal = unpack.getStringExtra("material");                                        //Unpack material
-        mLatitude = unpack.getDoubleExtra("mLatitude", 0);                          //Unpack mLatitude
-        mLongitude = unpack.getDoubleExtra("mLongitude", 0);                        //Unpack mLongitude
+        mAuthor = unpack.getStringExtra("author");                                             //Unpack mAuthor
+        mImgWallUrl = unpack.getStringArrayListExtra("imgWallUrl");                            //Unpack image arrayList
+        mDescription = unpack.getStringExtra("description");                                   //Unpack mDescription
+        mPhotographer = unpack.getStringExtra("photographer");                                 //Unpack mPhotographer
+        mAddress = unpack.getStringExtra("address");                                           //Unpack mAddress
+        mMaterial = unpack.getStringExtra("material");                                        //Unpack material
+        mLatitude = unpack.getDoubleExtra("latitude", 0);                          //Unpack mLatitude
+        mLongitude = unpack.getDoubleExtra("longitude", 0);                        //Unpack mLongitude
         //Log unpacking
         Log.d(TAG, "Unpacked profile '" + mAuthor + "'");
 
@@ -62,7 +62,7 @@ public class InfoActivity extends AppCompatActivity {
         tvDescription.setText(mDescription);                                                                     //Put desc in textview
         tvPhotographer.setText(getString(R.string.photographer) + ": " + mPhotographer);                         //Put mPhotographer in textview
         tvAddress.setText(getString(R.string.profile_address) + ":\n" + mAddress);                               //Put mAddress in textview
-        tvMaterial.setText(getString(R.string.profile_material) + ":\n" + materiaal);                           //Put material in textview
+        tvMaterial.setText(getString(R.string.profile_material) + ":\n" + mMaterial);                           //Put material in textview
         Picasso.get().load("https://api.blindwalls.gallery/" + mImgWallUrl.get(0)).into(imgOfImgWallUrl);  //Put first image of Arraylist into imageview
 
         imgOfImgWallUrl.setOnClickListener(new View.OnClickListener() {

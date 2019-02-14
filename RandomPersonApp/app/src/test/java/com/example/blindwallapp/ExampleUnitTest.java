@@ -1,4 +1,4 @@
-package com.example.randomuserapp;
+package com.example.blindwallapp;
 
 import org.junit.Test;
 

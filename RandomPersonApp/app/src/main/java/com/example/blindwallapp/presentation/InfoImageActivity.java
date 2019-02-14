@@ -1,4 +1,4 @@
-package com.example.randomuserapp.presentation;
+package com.example.blindwallapp.presentation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.example.randomuserapp.R;
+import com.example.blindwallapp.R;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 

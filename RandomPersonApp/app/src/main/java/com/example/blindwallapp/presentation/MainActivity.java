@@ -1,7 +1,7 @@
 //Dit project is gemaakt door Jay Hagendoorn en Vincent Hendriks.
 
 
-package com.example.randomuserapp.presentation;
+package com.example.blindwallapp.presentation;
 
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.example.randomuserapp.R;
-import com.example.randomuserapp.model.Profile;
-import com.example.randomuserapp.model.WallProfileAdapter;
-import com.example.randomuserapp.services.JSONService;
+import com.example.blindwallapp.R;
+import com.example.blindwallapp.model.Profile;
+import com.example.blindwallapp.model.WallProfileAdapter;
+import com.example.blindwallapp.services.JSONService;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
