@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private final String TAG = MainActivity.class.getSimpleName();
+    private final String TAG = InfoActivity.class.getSimpleName();
 
     private String author;      //Profiel/persoon
     private ArrayList<String> imgWallUrl;
@@ -40,7 +40,7 @@ public class InfoActivity extends AppCompatActivity {
 
         //Find id's for each layOut element.
         TextView tvAuthor           = findViewById(R.id.tv_name);
-        ImageView imgOfImgWallUrl   = findViewById(R.id.img_wall_picture);
+        ImageView imgOfImgWallUrl   = findViewById(R.id.img_profile);
         TextView tvDescription      = findViewById(R.id.tv_description);
         TextView tvPhotographer = findViewById(R.id.tv_photographer);
         TextView tvAddress            = findViewById(R.id.tv_address);
@@ -56,8 +56,7 @@ public class InfoActivity extends AppCompatActivity {
         tvPhotographer.setText(getString(R.string.photographer) + ": " + photographer);   //put photographer in textview
         tvAddress.setText(getString(R.string.profile_address) + ":\n" + address);     //put address in textview
         tvMaterial.setText(getString(R.string.profile_material) + ":\n" + materiaal);  //put material in textview
-        Log.d(TAG, imgWallUrl.get(0));
-        //Picasso.get().load("https://api.blindwalls.gallery/" + imgWallUrl.get(0)).into(imgOfImgWallUrl);                    //Put first image of Arraylist into imageview
+        Picasso.get().load("https://api.blindwalls.gallery/" + imgWallUrl.get(0)).into(imgOfImgWallUrl);                    //Put first image of Arraylist into imageview
 
 
 
