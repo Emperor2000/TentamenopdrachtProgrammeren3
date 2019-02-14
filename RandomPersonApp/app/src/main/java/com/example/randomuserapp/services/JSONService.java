@@ -100,8 +100,8 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                 String mate = user.getJSONObject("material").getString(lang);                       //Get material
                 String photographer = user.getString("photographer");                         //Get photographer
                 String address = user.getString("address");                                   //Get address
-                double latitude = user.getDouble("latitude");
-                double longitude = user.getDouble("longitude");
+                double latitude = user.getDouble("latitude");                                 //Get latitude
+                double longitude = user.getDouble("longitude");                               //Get longitude
                 JSONArray imgResult = user.getJSONArray("images");                            //Get image array
 
                 String img = null;                                                                  //Set img variable with String

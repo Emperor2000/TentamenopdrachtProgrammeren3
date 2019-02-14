@@ -9,4 +9,5 @@
     <string name="toast_images_none">Er zijn geen afbeeldingen meer</string>
     <string name="toast_images_of">van de</string>
     <string name="toast_images_amount">Afbeelding</string>
+    <string name="btn_to_map">ga naar map</string>
 </resources>

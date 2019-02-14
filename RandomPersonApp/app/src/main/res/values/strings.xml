@@ -9,4 +9,5 @@
     <string name="toast_images_none">There are no more images to show</string>
     <string name="toast_images_of">of</string>
     <string name="toast_images_amount">Image</string>
+    <string name="btn_to_map">show on map</string>
 </resources>

@@ -64,7 +64,6 @@ public class Profile {
         return this.material;
     }
 
-
     //Latitude and logitude for geolocation.
     public double getLatitude(){                                                                    //get method for latitude
         return this.latitude;
