@@ -6,4 +6,7 @@
     <string name="profile_address">Adres</string>
     <string name="profile_material">Materiaal</string>
     <string name="toast_read_data">JSON dienst URL is opgelost, data is gelezen en toegevoegd.</string>
+    <string name="toast_images_none">Er zijn geen afbeeldingen meer</string>
+    <string name="toast_images_of">van de</string>
+    <string name="toast_images_amount">Afbeelding</string>
 </resources>

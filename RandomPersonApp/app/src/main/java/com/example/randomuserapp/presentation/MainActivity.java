@@ -3,30 +3,24 @@
 
 package com.example.randomuserapp.presentation;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.randomuserapp.R;
 import com.example.randomuserapp.model.Profile;
 import com.example.randomuserapp.model.WallProfileAdapter;
 import com.example.randomuserapp.services.JSONService;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements JSONService.JSONServiceListener {
+
+    //Assert private variables
     private final String cycleTag = "LifeCycleEvents";
     private final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
@@ -36,6 +30,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set content view
         setContentView(R.layout.activity_main_recyclerview);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_profile_list);
@@ -45,6 +41,11 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(wallProfileAdapter);
         JSONService JSONService = new JSONService(this);
         JSONService.execute();
+<<<<<<< HEAD
+=======
+
+        //Toast showing the data has been read
+>>>>>>> master
         Toast.makeText(getApplicationContext(), R.string.toast_read_data, Toast.LENGTH_LONG).show();
     }
 
@@ -54,9 +55,9 @@ public class MainActivity extends AppCompatActivity
         this.profileList.addAll(profiles);
         this.wallProfileAdapter.notifyDataSetChanged();
 
-        Log.d(TAG, "We have " + profileList.size() + " profiles");
+        //Log profile amount
+        Log.d(TAG, profileList.size() + " profiles added");
     }
-
 
     //Configuration change when screen is rotated.
     @Override
@@ -64,9 +65,6 @@ public class MainActivity extends AppCompatActivity
         super.onConfigurationChanged(newConfig);
         Toast.makeText(this, "Changed orientation", Toast.LENGTH_LONG).show();
     }
-
-
-
 
     public void onStart()
     {
