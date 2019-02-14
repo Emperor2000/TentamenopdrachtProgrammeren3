@@ -2,6 +2,7 @@ package com.example.randomuserapp.presentation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,5 +68,13 @@ public class MainActivity extends AppCompatActivity
         this.wallProfileAdapter.notifyDataSetChanged();
 
         Log.d(TAG, "We have " + profileList.size() + " profiles");
+    }
+
+
+    //Configuration change when screen is rotated.
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Toast.makeText(this, "Changed orientation", Toast.LENGTH_LONG).show();
     }
 }

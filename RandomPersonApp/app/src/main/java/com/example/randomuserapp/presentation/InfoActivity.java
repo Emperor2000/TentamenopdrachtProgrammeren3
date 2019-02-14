@@ -2,12 +2,14 @@ package com.example.randomuserapp.presentation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.randomuserapp.R;
 import com.squareup.picasso.Picasso;
@@ -92,6 +94,11 @@ public class InfoActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
         //If language is set to en, default yes.
       /*  if (lang.equals("en")) {
             tvAuthor.setText("Author: " + author);
@@ -121,5 +128,8 @@ public class InfoActivity extends AppCompatActivity {
 
 
     }
+
+
+    //Configuration change when screen is rotated.
 }
 //TODO: Activity_Main.xml moet text overlay hebben op afbeeldingen.

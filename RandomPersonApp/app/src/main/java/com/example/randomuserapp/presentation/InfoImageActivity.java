@@ -3,6 +3,7 @@ package com.example.randomuserapp.presentation;
 import android.app.AppComponentFactory;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class InfoImageActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
 
