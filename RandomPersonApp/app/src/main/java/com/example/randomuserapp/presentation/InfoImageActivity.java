@@ -17,7 +17,7 @@ public class InfoImageActivity extends AppCompatActivity {
     //Assert private variables
     private final String TAG = InfoImageActivity.class.getSimpleName();
     private ArrayList mImgWallUrl;
-    private int countImages = 1;
+    private int mCountImages = 1;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class InfoImageActivity extends AppCompatActivity {
         //Log Activity change
         Log.d(TAG, "Changed activity to InfoImageActivity");
         //Log show image number
-        Log.d(TAG, "Showing image number " + countImages);
+        Log.d(TAG, "Showing image number " + mCountImages);
 
         //Set content view
         setContentView(R.layout.activity_info_image);
@@ -45,16 +45,16 @@ public class InfoImageActivity extends AppCompatActivity {
                 Context context = v.getContext();
 
                 //Check if the image id requested doesn't overshoot the size
-                if (countImages < mImgWallUrl.size()) {
+                if (mCountImages < mImgWallUrl.size()) {
                     ImageView portfolioSwitchImage = findViewById(R.id.img_portfolio);
-                    Picasso.get().load("https://api.blindwalls.gallery/" + mImgWallUrl.get(countImages)).into(portfolioSwitchImage);
-                    countImages++;
+                    Picasso.get().load("https://api.blindwalls.gallery/" + mImgWallUrl.get(mCountImages)).into(portfolioSwitchImage);
+                    mCountImages++;
 
                     //Toast showing the image count
-                    Toast.makeText(context,getString(R.string.toast_images_amount) + " " + countImages + " " + getString(R.string.toast_images_of) + " " + mImgWallUrl.size(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,getString(R.string.toast_images_amount) + " " + mCountImages + " " + getString(R.string.toast_images_of) + " " + mImgWallUrl.size(), Toast.LENGTH_SHORT).show();
 
                     //Log show image number
-                    Log.d(TAG, "Showing image number " + countImages);
+                    Log.d(TAG, "Showing image number " + mCountImages);
                 } else {
 
                     //Toast showing there are no more images

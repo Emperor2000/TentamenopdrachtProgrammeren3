@@ -2,7 +2,6 @@ package com.example.randomuserapp.presentation;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,14 +18,14 @@ public class InfoActivity extends AppCompatActivity {
 
     //Assert private variables
     private final String TAG = InfoActivity.class.getSimpleName();
-    private String author;      //Profiles/author
-    private ArrayList<String> imgWallUrl;
-    private String description;
-    private String photographer;
-    private String address;
+    private String mAuthor;      //Profiles/mAuthor
+    private ArrayList<String> mImgWallUrl;
+    private String mDescription;
+    private String mPhotographer;
+    private String mAddress;
     private String materiaal;
-    private double latitude;
-    private double longitude;
+    private double mLatitude;
+    private double mLongitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,16 +38,16 @@ public class InfoActivity extends AppCompatActivity {
 
         //Unpack variables
         Intent unpack = getIntent();                                                                //Set unpack region
-        author = unpack.getStringExtra("author");                                             //Unpack author
-        imgWallUrl = unpack.getStringArrayListExtra("imgWallUrl");                            //Unpack image arrayList
-        description = unpack.getStringExtra("description");                                   //Unpack description
-        photographer = unpack.getStringExtra("photographer");                                 //Unpack photographer
-        address = unpack.getStringExtra("address");                                           //Unpack address
+        mAuthor = unpack.getStringExtra("mAuthor");                                             //Unpack mAuthor
+        mImgWallUrl = unpack.getStringArrayListExtra("mImgWallUrl");                            //Unpack image arrayList
+        mDescription = unpack.getStringExtra("mDescription");                                   //Unpack mDescription
+        mPhotographer = unpack.getStringExtra("mPhotographer");                                 //Unpack mPhotographer
+        mAddress = unpack.getStringExtra("mAddress");                                           //Unpack mAddress
         materiaal = unpack.getStringExtra("material");                                        //Unpack material
-        latitude = unpack.getDoubleExtra("latitude", 0);                          //Unpack latitude
-        longitude = unpack.getDoubleExtra("longitude", 0);                        //Unpack longitude
+        mLatitude = unpack.getDoubleExtra("mLatitude", 0);                          //Unpack mLatitude
+        mLongitude = unpack.getDoubleExtra("mLongitude", 0);                        //Unpack mLongitude
         //Log unpacking
-        Log.d(TAG, "Unpacked profile '" + author + "'");
+        Log.d(TAG, "Unpacked profile '" + mAuthor + "'");
 
         //Find id's for each layOut element.
         TextView tvAuthor           = findViewById(R.id.tv_name);                                   //Set tvAuthor to view
@@ -59,22 +58,23 @@ public class InfoActivity extends AppCompatActivity {
         TextView tvMaterial        = findViewById(R.id.tv_material);                                //Set tvMaterial to view
         Button btnGeoLocation = findViewById(R.id.btn_geolocation);
 
-        tvAuthor.setText(author);                                                                               //Put author name in textview
-        tvDescription.setText(description);                                                                     //Put desc in textview
-        tvPhotographer.setText(getString(R.string.photographer) + ": " + photographer);                         //Put photographer in textview
-        tvAddress.setText(getString(R.string.profile_address) + ":\n" + address);                               //Put address in textview
+        tvAuthor.setText(mAuthor);                                                                               //Put mAuthor name in textview
+        tvDescription.setText(mDescription);                                                                     //Put desc in textview
+        tvPhotographer.setText(getString(R.string.photographer) + ": " + mPhotographer);                         //Put mPhotographer in textview
+        tvAddress.setText(getString(R.string.profile_address) + ":\n" + mAddress);                               //Put mAddress in textview
         tvMaterial.setText(getString(R.string.profile_material) + ":\n" + materiaal);                           //Put material in textview
-        Picasso.get().load("https://api.blindwalls.gallery/" + imgWallUrl.get(0)).into(imgOfImgWallUrl);  //Put first image of Arraylist into imageview
+        Picasso.get().load("https://api.blindwalls.gallery/" + mImgWallUrl.get(0)).into(imgOfImgWallUrl);  //Put first image of Arraylist into imageview
 
         imgOfImgWallUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "OnClickListener Active, img");
                 Context context = v.getContext();   //getContext
                 Intent intent = new Intent(context, InfoImageActivity.class); //Create intent with context and destination class.
-                intent.putExtra("ImageList", imgWallUrl);               //Send extra information, arraylist of image url's.
+                intent.putExtra("ImageList", mImgWallUrl);               //Send extra information, arraylist of image url's.
 
                 //Toast showing the image count
-                Toast.makeText(context,  getString(R.string.toast_images_amount) + " 1 " + getString(R.string.toast_images_of) + " " + imgWallUrl.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,  getString(R.string.toast_images_amount) + " 1 " + getString(R.string.toast_images_of) + " " + mImgWallUrl.size(), Toast.LENGTH_SHORT).show();
 
                 //Start activity InfoImageActivity when someone clicks an image inside of the InfoActivity.
                 context.startActivity(intent);
@@ -87,11 +87,12 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             //Onclick event for GeoLocation button
             public void onClick(View v) {
+                Log.d(TAG, "onClickListener Active, GeoLocation button");
                 Context context = v.getContext();
                     Intent intent = new Intent(context, GeoActivity.class);
-                    intent.putExtra("address", address);
-                    intent.putExtra("latitude", latitude);
-                    intent.putExtra("longitude", longitude);
+                    intent.putExtra("mAddress", mAddress);
+                    intent.putExtra("mLatitude", mLatitude);
+                    intent.putExtra("mLongitude", mLongitude);
                     context.startActivity(intent);
             }
         });

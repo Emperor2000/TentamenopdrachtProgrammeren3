@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
+    <!--Image view for wall_picture-->
     <ImageView
-
-
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:padding="5dp"
         android:id="@+id/img_wall_picture"
         android:scaleType="centerCrop"/>
+    <!--Text we display over the image-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,23 +22,4 @@
         android:text="TEKST DISPLAYED OVER IMAGE"
         android:textColor="#FFFFFF"
         android:id="@+id/tv_inside_img"/>
-
-
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:id="@+id/tv_person_name"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:id="@+id/tv_person_email"/>
-    </LinearLayout>-->
 </RelativeLayout>

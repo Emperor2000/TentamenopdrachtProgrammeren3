@@ -19,10 +19,10 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
 
     //Assert private variables
     private final String TAG = WallProfileAdapter.class.getSimpleName();
-    private ArrayList<Profile> profileList;
+    private ArrayList<Profile> mProfileList;
 
     public WallProfileAdapter(ArrayList<Profile> profileList) {
-        this.profileList = profileList;
+        this.mProfileList = profileList;
     }
 
 
@@ -42,10 +42,10 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
     @Override
     public void onBindViewHolder(@NonNull BlindWallViewHolder blindWallProfileViewHolder, final int position) {
 
-        Profile profile = profileList.get(position);
-        blindWallProfileViewHolder.tvTextInsideImage.setText(profile.getAuthor());
+        Profile profile = mProfileList.get(position);
+        blindWallProfileViewHolder.tvTextInsideImage.setText(profile.getmAuthor());
 
-        Picasso.get().load(profile.getImgUrl()).into(blindWallProfileViewHolder.imgProfilePictures);
+        Picasso.get().load(profile.getmImgUrl()).into(blindWallProfileViewHolder.imgProfilePictures);
         blindWallProfileViewHolder.imgProfilePictures.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,19 +56,19 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
 
                 Context context = v.getContext(); //this.itemView.getContext();
                 Intent intent = new Intent(context, InfoActivity.class);
-                for (Profile check : profileList){
+                for (Profile check : mProfileList){
 
-                    if (check.getId()-1 == position){                                                   //Check if ID is correct
-                        intent.putExtra("author", check.getAuthor());                             //Adds the author to intent
-                        intent.putExtra("imgWallUrl", check.getImgWallUrl());                     //Adds the image arrayList to intent
-                        intent.putExtra("description", check.getDescription());                   //Adds the description to intent
+                    if (check.getmId()-1 == position){                                                   //Check if ID is correct
+                        intent.putExtra("author", check.getmAuthor());                             //Adds the author to intent
+                        intent.putExtra("imgWallUrl", check.getmImgWallUrl());                     //Adds the image arrayList to intent
+                        intent.putExtra("description", check.getmDescription());                   //Adds the description to intent
                         intent.putExtra("photographer", check.getPhotographer());                 //Adds the photographer to intent
-                        intent.putExtra("address", check.getAddress());                           //Adds the address to intent
-                        intent.putExtra("material", check.getMaterial());                         //Adds the material to intent
-                        intent.putExtra("latitude", check.getLatitude());                         //Adds the latitude to intent
+                        intent.putExtra("address", check.getmAddress());                           //Adds the address to intent
+                        intent.putExtra("material", check.getmMaterial());                         //Adds the material to intent
+                        intent.putExtra("latitude", check.getmLatitude());                         //Adds the latitude to intent
                         intent.putExtra("longitude", check.getLongitude());                       //Adds the longitude to intent
                         //Log profile added
-                        Log.d(TAG, "Profile '" + check.getAuthor() + "' put in intent");
+                        Log.d(TAG, "Profile '" + check.getmAuthor() + "' put in intent");
                     }
                 }
                 //Start activity InfoActivity when someone clicks an image inside WallProfileAdapter
@@ -79,7 +79,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
 
     @Override
     public int getItemCount() {
-        return this.profileList.size();
+        return this.mProfileList.size();
     }
 
     public class BlindWallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -96,6 +96,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         public BlindWallViewHolder(@NonNull View itemView) {
             super(itemView);
             this.itemView = itemView;
+            Log.d(TAG, "Entered BlindWallViewHolder");
 
             tvTextInsideImage = itemView.findViewById(R.id.tv_inside_img);
             imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
