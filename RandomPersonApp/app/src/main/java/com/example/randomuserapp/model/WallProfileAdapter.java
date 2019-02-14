@@ -40,22 +40,33 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BlindWallViewHolder blindWallProfileViewHolder, int position) {
+    public void onBindViewHolder(@NonNull BlindWallViewHolder blindWallProfileViewHolder, final int position) {
 
         Profile profile = profileList.get(position);
 
         //personViewHolder.tvPersonName.setText(profile.getFullName());
         Picasso.get().load(profile.getImgUrl()).into(blindWallProfileViewHolder.imgProfilePictures);
-    blindWallProfileViewHolder.imgProfilePictures.setOnClickListener(new View.OnClickListener() {
+        blindWallProfileViewHolder.imgProfilePictures.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          //  int i = getAdapterPosition();
-      //      Log.d(TAG, "ID = " + i);
-            //Intent intent = new Intent(WallProfileAdapter.this, InfoActivity.class);
-            Context context = v.getContext();
+
+            Log.d("kkkkkkkkkkkkkkkkkk", "ID = " + position);
+
+            Context context = v.getContext(); //this.itemView.getContext();
             Intent intent = new Intent(context, InfoActivity.class);
-      //      intent.putExtra("id", i);
+            for (Profile check : profileList){
+                if (check.getId()-1 == position){
+                    intent.putExtra("author", check.getAuthor());
+                    intent.putExtra("imgWallUrl", check.getImgWallUrl());
+                    intent.putExtra("description", check.getDescription());
+                    intent.putExtra("photographer", check.getFotograaf());
+                    intent.putExtra("address", check.getAdres());
+                    intent.putExtra("material", check.getMateriaal());
+                    Log.w(TAG, check.getAuthor());
+                }
+            }
             context.startActivity(intent);
+
         }
     });
     }
@@ -72,11 +83,22 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         @Override
         public void onClick(View v) {
             int i = getAdapterPosition();
-            Log.d(TAG, "ID = " + i);
+            Log.d("kkkkkkkkkkkkkkkkkk", "ID = " + i);
+
             //Intent intent = new Intent(WallProfileAdapter.this, InfoActivity.class);
             Context context = v.getContext(); //this.itemView.getContext();
             Intent intent = new Intent(context, InfoActivity.class);
-            intent.putExtra("id", i);
+            for (Profile check : profileList){
+                if (check.getId()-1 == i){
+                    intent.putExtra("author", check.getAuthor());
+                    intent.putExtra("imgWallUrl", check.getImgWallUrl());
+                    intent.putExtra("description", check.getDescription());
+                    intent.putExtra("photographer", check.getFotograaf());
+                    intent.putExtra("address", check.getAdres());
+                    intent.putExtra("material", check.getMateriaal());
+                    Log.w(TAG, check.getAuthor());
+                }
+            }
             context.startActivity(intent);
         }
 
@@ -93,10 +115,5 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
             //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
             itemView.setOnClickListener(this);
         }
-
-
     }
-
-
-
 }

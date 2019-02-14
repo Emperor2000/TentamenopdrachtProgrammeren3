@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class JSONService extends AsyncTask<Void, Void, String> {
@@ -82,12 +83,16 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                 //Get name
                 String title = user.getString("author");
                 //CHANGE GETSTRING 'EN' TO VARIABLE
-                String lang = "nl";
+                String langu = Locale.getDefault().getLanguage();
+                String lang = "en";
+                if (langu.contains("nl")){
+                    lang = "nl";
+                }
+                int id = user.getInt("id");
                 String desc = user.getJSONObject("description").getString(lang);
                 String mate = user.getJSONObject("material").getString(lang);
                 String photographer = user.getString("photographer");
                 String address = user.getString("address");
-
 
                 //Get image
                 JSONArray imgResult = user.getJSONArray("images");
@@ -104,9 +109,8 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                     }
                 }
 
-                Profile profile = new Profile(title, mate, address, photographer, desc).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
+                Profile profile = new Profile(id, title, mate, address, photographer, desc).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
                 profileArrayList.add(profile);
-
                 //Check if wall images are added correctly
                 /*for (String check : imgWall){
                     Log.d(TAG, check);
