@@ -100,7 +100,8 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                 String mate = user.getJSONObject("material").getString(lang);                       //Get material
                 String photographer = user.getString("photographer");                         //Get photographer
                 String address = user.getString("address");                                   //Get address
-
+                double latitude = user.getDouble("latitude");
+                double longitude = user.getDouble("longitude");
                 JSONArray imgResult = user.getJSONArray("images");                            //Get image array
 
                 String img = null;                                                                  //Set img variable with String
@@ -121,9 +122,10 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                         imgWall.add(user.getJSONArray("images").getJSONObject(j).getString("url"));
                     }
                 }
-
-                Profile profile = new Profile(id, title, mate, address, photographer, desc).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
+                //Profile constructor.
+                Profile profile = new Profile(id, title, mate, address, photographer, desc, latitude, longitude).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
                 profileArrayList.add(profile);
+
 
                 //Log put profile in arrayList
                 Log.d(TAG, "Put '" + profile.getAuthor() + "' inserted into list");

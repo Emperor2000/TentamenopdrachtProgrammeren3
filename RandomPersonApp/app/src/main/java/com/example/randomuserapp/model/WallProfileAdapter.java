@@ -65,7 +65,8 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
                         intent.putExtra("photographer", check.getPhotographer());                 //Adds the photographer to intent
                         intent.putExtra("address", check.getAddress());                           //Adds the address to intent
                         intent.putExtra("material", check.getMaterial());                         //Adds the material to intent
-
+                        intent.putExtra("latitude", check.getLatitude());                         //Adds the latitude to intent
+                        intent.putExtra("longitude", check.getLongitude());                       //Adds the longitude to intent
                         //Log profile added
                         Log.d(TAG, "Profile '" + check.getAuthor() + "' put in intent");
                     }

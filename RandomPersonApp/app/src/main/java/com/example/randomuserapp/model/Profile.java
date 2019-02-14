@@ -13,14 +13,17 @@ public class Profile {
     private String photographer;
     private String address;
     private String material;
-
-    public Profile(int id, String author, String material, String address, String photographer, String description){
+    private double latitude;
+    private double longitude;
+    public Profile(int id, String author, String material, String address, String photographer, String description, double latitude, double longitude){
         this.id = id;
         this.author = author;
         this.material = material;
         this.address = address;
         this.photographer = photographer;
         this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     //Set the image url for this profile
@@ -59,6 +62,15 @@ public class Profile {
     }
     public String getMaterial(){                                                                    //get method for material
         return this.material;
+    }
+
+
+    //Latitude and logitude for geolocation.
+    public double getLatitude(){                                                                    //get method for latitude
+        return this.latitude;
+    }
+    public double getLongitude(){                                                                   //get method for longitude
+        return this.longitude;
     }
 
 }

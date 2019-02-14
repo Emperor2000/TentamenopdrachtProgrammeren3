@@ -2,10 +2,12 @@ package com.example.randomuserapp.presentation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +25,8 @@ public class InfoActivity extends AppCompatActivity {
     private String photographer;
     private String address;
     private String materiaal;
-
+    private double latitude;
+    private double longitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,8 @@ public class InfoActivity extends AppCompatActivity {
         photographer = unpack.getStringExtra("photographer");                                 //Unpack photographer
         address = unpack.getStringExtra("address");                                           //Unpack address
         materiaal = unpack.getStringExtra("material");                                        //Unpack material
-
+        latitude = unpack.getDoubleExtra("latitude", 0);                          //Unpack latitude
+        longitude = unpack.getDoubleExtra("longitude", 0);                        //Unpack longitude
         //Log unpacking
         Log.d(TAG, "Unpacked profile '" + author + "'");
 
@@ -53,7 +57,7 @@ public class InfoActivity extends AppCompatActivity {
         TextView tvPhotographer = findViewById(R.id.tv_photographer);                               //Set tvPhotographer to view
         TextView tvAddress            = findViewById(R.id.tv_address);                              //Set tvAddress to view
         TextView tvMaterial        = findViewById(R.id.tv_material);                                //Set tvMaterial to view
-
+        Button btnGeoLocation = findViewById(R.id.btn_geolocation);
 
         tvAuthor.setText(author);                                                                               //Put author name in textview
         tvDescription.setText(description);                                                                     //Put desc in textview
@@ -74,6 +78,21 @@ public class InfoActivity extends AppCompatActivity {
 
                 //Start activity InfoImageActivity when someone clicks an image inside of the InfoActivity.
                 context.startActivity(intent);
+            }
+        });
+
+
+        //GeoLocation on click Listener
+        btnGeoLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //Onclick event for GeoLocation button
+            public void onClick(View v) {
+                Context context = v.getContext();
+                    Intent intent = new Intent(context, GeoActivity.class);
+                    intent.putExtra("address", address);
+                    intent.putExtra("latitude", latitude);
+                    intent.putExtra("longitude", longitude);
+                    context.startActivity(intent);
             }
         });
     }
