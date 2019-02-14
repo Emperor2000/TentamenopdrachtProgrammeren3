@@ -92,8 +92,6 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         }
         public TextView tvTextInsideImage;
         public ImageView imgProfilePictures;
-        public TextView tvPersonName;
-        public TextView tvPersonEmail;
 
         public BlindWallViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,8 +99,6 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
 
             tvTextInsideImage = itemView.findViewById(R.id.tv_inside_img);
            imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
-            //tvPersonName = itemView.findViewById(R.id.tv_person_name);
-            //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
             itemView.setOnClickListener(this);
         }
     }

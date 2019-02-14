@@ -1,3 +1,6 @@
+//Dit project is gemaakt door Jay Hagendoorn en Vincent Hendriks.
+
+
 package com.example.randomuserapp.presentation;
 
 import android.content.Context;
@@ -43,22 +46,6 @@ public class MainActivity extends AppCompatActivity
         JSONService JSONService = new JSONService(this);
         JSONService.execute();
         Toast.makeText(getApplicationContext(), R.string.toast_read_data, Toast.LENGTH_LONG).show();
-
-
-        /*clickableImage = (ImageView) findViewById(R.id.img_wall_picture);
-        clickableImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //showProfile();
-                Context context = MainActivity.this;
-                Toast.makeText(context, "clicked", Toast.LENGTH_LONG);
-            }
-        });*/
-    }
-
-    public void showProfile() {
-        Intent intent = new Intent(this, InfoActivity.class);
-        startActivity(intent);
     }
 
     @Override

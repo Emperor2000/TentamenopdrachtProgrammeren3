@@ -37,8 +37,11 @@ public class JSONService extends AsyncTask<Void, Void, String> {
 
         try {
             URL mUrl = new URL(mBlindWallAPI);
+
             URLConnection urlConnection = mUrl.openConnection();
+
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlConnection;
+
             httpURLConnection.setRequestMethod("GET");
 
             httpURLConnection.connect();
@@ -101,20 +104,20 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                 ArrayList<String> imgWall = new ArrayList<>();
 
                 for(int j = 0; j < imgResult.length();j++){
+
                     if (imgResult.getJSONObject(j).getString("type").equals("frontpage")){
+
                         img = user.getJSONArray("images").getJSONObject(j).getString("url");
                     }
                     else if(imgResult.getJSONObject(j).getString("type").equals("wall")){
+
                         imgWall.add(user.getJSONArray("images").getJSONObject(j).getString("url"));
                     }
                 }
 
                 Profile profile = new Profile(id, title, mate, address, photographer, desc).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
                 profileArrayList.add(profile);
-                //Check if wall images are added correctly
-                /*for (String check : imgWall){
-                    Log.d(TAG, check);
-                }*/
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
