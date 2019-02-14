@@ -43,7 +43,7 @@ public class InfoImageActivity extends AppCompatActivity {
                 } else {
                     Toast toast = Toast.makeText(context, "There are no more images to show", Toast.LENGTH_LONG);
                     toast.show();
-                    finish();
+                    finish();   //Go back to infoActivity.
                 }
 
             }

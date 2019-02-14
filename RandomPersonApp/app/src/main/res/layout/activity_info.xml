@@ -19,12 +19,12 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="127dp"
-        android:layout_height="32dp"
+        android:layout_width="200dp"
+        android:layout_height="33dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="Naam"
-        android:textSize="22sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/img_profile"
         app:layout_constraintTop_toTopOf="parent" />
 
