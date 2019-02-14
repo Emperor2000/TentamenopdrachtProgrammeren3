@@ -47,13 +47,17 @@ public class InfoImageActivity extends AppCompatActivity {
                 //Check if the image id requested doesn't overshoot the size
                 if (countImages < mImgWallUrl.size()) {
                     ImageView portfolioSwitchImage = findViewById(R.id.img_portfolio);
+                    Picasso.get().load("https://api.blindwalls.gallery/" + mImgWallUrl.get(countImages)).into(portfolioSwitchImage);
                     countImages++;
-                    Picasso.get().load("https://api.blindwalls.gallery/" + mImgWallUrl.get(countImages-1)).into(portfolioSwitchImage);
-                    Toast.makeText(context,  getString(R.string.toast_images_amount) + " " + countImages + " " + getString(R.string.toast_images_of) + " " + mImgWallUrl.size(), Toast.LENGTH_SHORT).show();
+
+                    //Toast showing the image count
+                    Toast.makeText(context,getString(R.string.toast_images_amount) + " " + countImages + " " + getString(R.string.toast_images_of) + " " + mImgWallUrl.size(), Toast.LENGTH_SHORT).show();
 
                     //Log show image number
                     Log.d(TAG, "Showing image number " + countImages);
                 } else {
+
+                    //Toast showing there are no more images
                     Toast.makeText(context, R.string.toast_images_none, Toast.LENGTH_LONG).show();
 
                     //Log exit activity
@@ -61,12 +65,7 @@ public class InfoImageActivity extends AppCompatActivity {
                     Log.d(TAG, "Exited InfoImageActivity");
                     finish();   //Go back to infoActivity.
                 }
-
             }
         });
     }
-
-
-
-
 }

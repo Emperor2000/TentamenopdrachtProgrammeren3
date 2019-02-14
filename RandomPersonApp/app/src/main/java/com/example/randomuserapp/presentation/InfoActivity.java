@@ -62,75 +62,21 @@ public class InfoActivity extends AppCompatActivity {
         tvMaterial.setText(getString(R.string.profile_material) + ":\n" + materiaal);                           //Put material in textview
         Picasso.get().load("https://api.blindwalls.gallery/" + imgWallUrl.get(0)).into(imgOfImgWallUrl);  //Put first image of Arraylist into imageview
 
-
-
-
         imgOfImgWallUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();   //getContext
                 Intent intent = new Intent(context, InfoImageActivity.class); //Create intent with context and destination class.
                 intent.putExtra("ImageList", imgWallUrl);               //Send extra information, arraylist of image url's.
+
+                //Toast showing the image count
                 Toast.makeText(context,  getString(R.string.toast_images_amount) + " 1 " + getString(R.string.toast_images_of) + " " + imgWallUrl.size(), Toast.LENGTH_SHORT).show();
-                context.startActivity(intent);      //Start activity InfoImageActivity when someone clicks an image inside of the InfoActivity.
+
+                //Start activity InfoImageActivity when someone clicks an image inside of the InfoActivity.
+                context.startActivity(intent);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //If language is set to en, default yes.
-      /*  if (lang.equals("en")) {
-            tvAuthor.setText("Author: " + author);
-        String imgUrl = "https://api.blindwalls.gallery/" + imgWallUrl.get(0);
-      //  Picasso.get().load(imgUrl.into(imgOfImgWallUrl));
-       // imgOfImgWallUrl.setImageURI("https://api.blindwalls.gallery/" + imgWallUrl.get(0).toString());
-
-            tvDescription.setText(description);
-            tvPhotographer.setText("Photographer: \n" + fotograaf);
-            tvAddress.setText("Address: \n" + address);
-            tvMaterial.setText("Material: " + materiaal);
-        }
-        //If language is set to nl, default no.
-        if (lang.equals("nl")) {
-            tvAuthor.setText("Naam: " + author);
-            tvDescription.setText(description);
-            tvPhotographer.setText("Fotograaf: \n" + fotograaf);
-            tvAddress.setText("Adres: \n" + address);
-            tvMaterial.setText("Materiaal: " + materiaal);
-        }*/
-
-        //Picasso.get().load(profileItemList.get(0)).into(imageView.findViewById(R.id.img_profile));
-
-//        recyclerView = (RecyclerView) findViewById(R.id.rv_profile_list);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
     }
-
-
     //Configuration change when screen is rotated.
 }
 //TODO: Activity_Main.xml moet text overlay hebben op afbeeldingen.

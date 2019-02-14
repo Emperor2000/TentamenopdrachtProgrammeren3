@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements JSONService.JSONServiceListener {
-    //Assert private variables
 
+    //Assert private variables
     private final String cycleTag = "LifeCycleEvents";
     private final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(wallProfileAdapter);
         JSONService JSONService = new JSONService(this);
         JSONService.execute();
-        Toast.makeText(getApplicationContext(), R.string.toast_read_data, Toast.LENGTH_LONG).show();
 
+        //Toast showing the data has been read
+        Toast.makeText(getApplicationContext(), R.string.toast_read_data, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -52,16 +53,12 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, profileList.size() + " profiles added");
     }
 
-
     //Configuration change when screen is rotated.
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Toast.makeText(this, "Changed orientation", Toast.LENGTH_LONG).show();
     }
-
-
-
 
     public void onStart()
     {
