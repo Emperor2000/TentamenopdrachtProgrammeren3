@@ -41,11 +41,7 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(wallProfileAdapter);
         JSONService JSONService = new JSONService(this);
         JSONService.execute();
-<<<<<<< HEAD
-=======
-
         //Toast showing the data has been read
->>>>>>> master
         Toast.makeText(getApplicationContext(), R.string.toast_read_data, Toast.LENGTH_LONG).show();
     }
 

@@ -109,10 +109,8 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                 //Check if img is a frontpage image or not
                 for(int j = 0; j < imgResult.length();j++){
 
-<<<<<<< HEAD
-=======
+
                     //Puts front page images in string img
->>>>>>> master
                     if (imgResult.getJSONObject(j).getString("type").equals("frontpage")){
 
                         img = user.getJSONArray("images").getJSONObject(j).getString("url");
@@ -127,11 +125,8 @@ public class JSONService extends AsyncTask<Void, Void, String> {
                 Profile profile = new Profile(id, title, mate, address, photographer, desc).setImgUrl("https://api.blindwalls.gallery/" + img).setWallImgUrl(imgWall);
                 profileArrayList.add(profile);
 
-<<<<<<< HEAD
-=======
                 //Log put profile in arrayList
                 Log.d(TAG, "Put '" + profile.getAuthor() + "' inserted into list");
->>>>>>> master
             }
         } catch (JSONException e) {
             e.printStackTrace();

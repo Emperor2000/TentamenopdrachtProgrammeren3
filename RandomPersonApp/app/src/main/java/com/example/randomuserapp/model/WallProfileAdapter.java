@@ -97,11 +97,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
             this.itemView = itemView;
 
             tvTextInsideImage = itemView.findViewById(R.id.tv_inside_img);
-<<<<<<< HEAD
-           imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
-=======
             imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
->>>>>>> master
             itemView.setOnClickListener(this);
         }
     }
