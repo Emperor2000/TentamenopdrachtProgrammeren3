@@ -99,4 +99,3 @@ public class InfoActivity extends AppCompatActivity {
     }
     //Configuration change when screen is rotated.
 }
-//TODO: Activity_Main.xml moet text overlay hebben op afbeeldingen.
