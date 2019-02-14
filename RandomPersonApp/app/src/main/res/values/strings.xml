@@ -1,3 +1,8 @@
 <resources>
+    <!--Strings for language-->
     <string name="app_name">BlindWall</string>
+    <string name="profile_name">Author</string>
+    <string name="photographer">Photographer</string>
+    <string name="profile_address">Address</string>
+    <string name="profile_material">Material</string>
 </resources>

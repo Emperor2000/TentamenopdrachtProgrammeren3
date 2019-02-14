@@ -50,12 +50,13 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         @Override
         public void onClick(View v) {
 
-            Log.d("kkkkkkkkkkkkkkkkkk", "ID = " + position);
+            Log.d("Sent Id", "ID = " + position);
 
             Context context = v.getContext(); //this.itemView.getContext();
             Intent intent = new Intent(context, InfoActivity.class);
             for (Profile check : profileList){
                 if (check.getId()-1 == position){
+                  //  intent.putExtra("Id", check.getId());
                     intent.putExtra("author", check.getAuthor());
                     intent.putExtra("imgWallUrl", check.getImgWallUrl());
                     intent.putExtra("description", check.getDescription());
@@ -82,24 +83,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
 
         @Override
         public void onClick(View v) {
-            int i = getAdapterPosition();
-            Log.d("kkkkkkkkkkkkkkkkkk", "ID = " + i);
 
-            //Intent intent = new Intent(WallProfileAdapter.this, InfoActivity.class);
-            Context context = v.getContext(); //this.itemView.getContext();
-            Intent intent = new Intent(context, InfoActivity.class);
-            for (Profile check : profileList){
-                if (check.getId()-1 == i){
-                    intent.putExtra("author", check.getAuthor());
-                    intent.putExtra("imgWallUrl", check.getImgWallUrl());
-                    intent.putExtra("description", check.getDescription());
-                    intent.putExtra("photographer", check.getFotograaf());
-                    intent.putExtra("address", check.getAdres());
-                    intent.putExtra("material", check.getMateriaal());
-                    Log.w(TAG, check.getAuthor());
-                }
-            }
-            context.startActivity(intent);
         }
 
         public ImageView imgProfilePictures;
@@ -110,7 +94,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
             super(itemView);
             this.itemView = itemView;
 
-            imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
+           imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
             //tvPersonName = itemView.findViewById(R.id.tv_person_name);
             //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
             itemView.setOnClickListener(this);
