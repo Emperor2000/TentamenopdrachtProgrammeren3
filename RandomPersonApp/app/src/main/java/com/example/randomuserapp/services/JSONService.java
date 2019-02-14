@@ -119,11 +119,11 @@ public class JSONService extends AsyncTask<Void, Void, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        listener.onUserNameAvailable(profileArrayList);
+        listener.onWallProfileAvailable(profileArrayList);
     }
 
     public interface JSONServiceListener {
-        public void onUserNameAvailable(ArrayList<Profile> profiles);
+        public void onWallProfileAvailable(ArrayList<Profile> profiles);
     }
 
 }

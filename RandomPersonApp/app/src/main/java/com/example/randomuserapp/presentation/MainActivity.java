@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onUserNameAvailable(ArrayList<Profile> profiles){
+    public void onWallProfileAvailable(ArrayList<Profile> profiles){
         this.profileList.clear();
         this.profileList.addAll(profiles);
         this.wallProfileAdapter.notifyDataSetChanged();
 
-        Log.d(TAG, "We have " + profileList.size() + " people");
+        Log.d(TAG, "We have " + profileList.size() + " profiles");
     }
 }
