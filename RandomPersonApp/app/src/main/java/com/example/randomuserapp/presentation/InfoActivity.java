@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.randomuserapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,6 @@ public class InfoActivity extends AppCompatActivity {
         photographer = unpack.getStringExtra("photographer");
         address = unpack.getStringExtra("address");
         materiaal = unpack.getStringExtra("material");
-     //   Log.d("My ID equals", unpack.getStringExtra("id"));
 
 
         //Find id's for each layOut element.
@@ -47,13 +47,38 @@ public class InfoActivity extends AppCompatActivity {
         TextView tvMaterial        = findViewById(R.id.tv_material);
 
 
+        for (String images : imgWallUrl) {
 
-
+        }
+       // imgOfImgWallUrl.setImageURI(imgWallUrl.get());
         tvAuthor.setText(author);       //Put author name in textview
         tvDescription.setText(description); //Put desc in textview
         tvPhotographer.setText(getString(R.string.photographer) + ": " + photographer);   //put photographer in textview
         tvAddress.setText(getString(R.string.profile_address) + ":\n" + address);     //put address in textview
         tvMaterial.setText(getString(R.string.profile_material) + ":\n" + materiaal);  //put material in textview
+        Log.d(TAG, imgWallUrl.get(0));
+        //Picasso.get().load("https://api.blindwalls.gallery/" + imgWallUrl.get(0)).into(imgOfImgWallUrl);                    //Put first image of Arraylist into imageview
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //If language is set to en, default yes.
       /*  if (lang.equals("en")) {
