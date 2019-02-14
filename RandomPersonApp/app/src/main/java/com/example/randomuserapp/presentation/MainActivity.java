@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.randomuserapp.R;
@@ -38,9 +39,9 @@ public class MainActivity extends AppCompatActivity
 
         wallProfileAdapter = new WallProfileAdapter(profileList);
         recyclerView.setAdapter(wallProfileAdapter);
-
         JSONService JSONService = new JSONService(this);
         JSONService.execute();
+        Toast.makeText(getApplicationContext(), R.string.toast_read_data, Toast.LENGTH_LONG).show();
 
 
         /*clickableImage = (ImageView) findViewById(R.id.img_wall_picture);

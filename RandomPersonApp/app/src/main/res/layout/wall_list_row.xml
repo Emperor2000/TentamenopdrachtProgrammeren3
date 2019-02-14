@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <ImageView
+
+
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:padding="5dp"
         android:id="@+id/img_wall_picture"
         android:scaleType="centerCrop"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dip"
+        android:layout_centerInParent="true"
+        android:background="#AA000000"
+        android:padding="12dip"
+        android:text="TEKST DISPLAYED OVER IMAGE"
+        android:textColor="#FFFFFF"
+        android:id="@+id/tv_inside_img"/>
+
 
     <!--<LinearLayout
         android:layout_width="match_parent"
@@ -27,4 +41,4 @@
             android:textSize="14dp"
             android:id="@+id/tv_person_email"/>
     </LinearLayout>-->
-</LinearLayout>
+</RelativeLayout>

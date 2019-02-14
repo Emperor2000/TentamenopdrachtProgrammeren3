@@ -1,9 +1,11 @@
 package com.example.randomuserapp.presentation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,6 +61,17 @@ public class InfoActivity extends AppCompatActivity {
         Picasso.get().load("https://api.blindwalls.gallery/" + imgWallUrl.get(0)).into(imgOfImgWallUrl);                    //Put first image of Arraylist into imageview
 
 
+
+
+        imgOfImgWallUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();   //getContext
+                Intent intent = new Intent(context, InfoImageActivity.class); //Create intent with context and destination class.
+                intent.putExtra("ImageList", imgWallUrl);               //Send extra information, arraylist of image url's.
+                context.startActivity(intent);      //Start activity InfoImageActivity when someone clicks an image inside of the InfoActivity.
+            }
+        });
 
 
 

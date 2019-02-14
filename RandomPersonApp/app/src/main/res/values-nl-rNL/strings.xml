@@ -5,4 +5,5 @@
     <string name="photographer">Fotograaf</string>
     <string name="profile_address">Adres</string>
     <string name="profile_material">Materiaal</string>
+    <string name="toast_read_data">JSON dienst URL is opgelost, data is gelezen en toegevoegd.</string>
 </resources>

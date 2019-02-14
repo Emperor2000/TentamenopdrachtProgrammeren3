@@ -5,4 +5,5 @@
     <string name="photographer">Photographer</string>
     <string name="profile_address">Address</string>
     <string name="profile_material">Material</string>
+    <string name="toast_read_data">JSON Service created, API url resolved, data scanned and added.</string>
 </resources>

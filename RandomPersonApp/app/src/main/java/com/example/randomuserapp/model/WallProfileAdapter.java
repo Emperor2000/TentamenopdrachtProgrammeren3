@@ -3,6 +3,7 @@ package com.example.randomuserapp.model;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,9 @@ import android.widget.TextView;
 import com.example.randomuserapp.R;
 import com.example.randomuserapp.presentation.InfoActivity;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.BlindWallViewHolder>{
@@ -43,8 +47,9 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
     public void onBindViewHolder(@NonNull BlindWallViewHolder blindWallProfileViewHolder, final int position) {
 
         Profile profile = profileList.get(position);
-
+        blindWallProfileViewHolder.tvTextInsideImage.setText(profile.getAuthor());
         //personViewHolder.tvPersonName.setText(profile.getFullName());
+
         Picasso.get().load(profile.getImgUrl()).into(blindWallProfileViewHolder.imgProfilePictures);
         blindWallProfileViewHolder.imgProfilePictures.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -85,7 +90,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
         public void onClick(View v) {
 
         }
-
+        public TextView tvTextInsideImage;
         public ImageView imgProfilePictures;
         public TextView tvPersonName;
         public TextView tvPersonEmail;
@@ -94,6 +99,7 @@ public class WallProfileAdapter extends RecyclerView.Adapter<WallProfileAdapter.
             super(itemView);
             this.itemView = itemView;
 
+            tvTextInsideImage = itemView.findViewById(R.id.tv_inside_img);
            imgProfilePictures = itemView.findViewById(R.id.img_wall_picture);
             //tvPersonName = itemView.findViewById(R.id.tv_person_name);
             //tvPersonEmail = itemView.findViewById(R.id.tv_person_email);
